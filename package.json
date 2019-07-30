@@ -1,6 +1,6 @@
 {
 	"name": "resilio-sync",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Resilio Sync Abstraction",
 	"license": "MIT",
 	"repository": "EdJoPaTo/resilio-sync-nodejs-abstraction",
