@@ -10,12 +10,12 @@
 		"url": "https://edjopato.de"
 	},
 	"engines": {
-		"node": ">=10"
+		"node": ">=10.17"
 	},
 	"scripts": {
-		"build": "del dist && tsc",
+		"build": "del-cli dist && tsc",
 		"prepack": "npm run build",
-		"test": "xo"
+		"test": "tsc && xo"
 	},
 	"main": "dist",
 	"types": "dist",
@@ -31,26 +31,17 @@
 		"write-json-file": "^4.1.1"
 	},
 	"devDependencies": {
-		"@sindresorhus/tsconfig": "^0.4.0",
-		"@types/node": "^12.0.2",
-		"@typescript-eslint/eslint-plugin": "^1.11.0",
-		"@typescript-eslint/parser": "^1.11.0",
-		"del-cli": "^2.0.0",
-		"eslint-config-xo-typescript": "^0.15.0",
+		"@sindresorhus/tsconfig": "^0.7.0",
+		"@types/node": "^13.11.1",
+		"del-cli": "^3.0.0",
 		"typescript": "^3.3.3",
-		"xo": "^0.24.0"
+		"xo": "^0.29.1"
 	},
 	"xo": {
 		"semicolon": false,
-		"extends": "xo-typescript",
-		"extensions": [
-			"ts"
-		],
 		"rules": {
-			"@typescript-eslint/semi": [
-				"error",
-				"never"
-			]
+			"node/no-unsupported-features/node-builtins": "warn",
+			"@typescript-eslint/prefer-readonly-parameter-types": "warn"
 		},
 		"overrides": [
 			{
