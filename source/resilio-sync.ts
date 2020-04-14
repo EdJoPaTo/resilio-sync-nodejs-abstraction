@@ -2,8 +2,8 @@ import * as writeJsonFile from 'write-json-file'
 
 import {ResilioConfig} from './config'
 
-import {createTempConfigFile} from './temp-config-file'
 import {generateFoldersOnFilesystem} from './filesystem'
+import {TemporaryConfiguration} from './temporary-configuration'
 
 import {ResilioSyncProcess} from './process'
 
@@ -33,18 +33,18 @@ export class ResilioSync {
 	 * Starts syncing with the provided config. Stops previously running sync process.
 	 */
 	async syncConfig(config: ResilioConfig, callbackOnClose?: CloseCallback): Promise<void> {
-		const temp = createTempConfigFile()
+		const temporaryConfiguration = new TemporaryConfiguration()
 
 		try {
 			await generateFoldersOnFilesystem(config)
-			await writeJsonFile(temp.filepath, config)
+			await writeJsonFile(temporaryConfiguration.filepath, config)
 
-			await this.syncConfigFile(temp.filepath, (code: number, signal: string) => {
-				temp.cleanupFunc()
+			await this.syncConfigFile(temporaryConfiguration.filepath, (code: number, signal: string) => {
+				temporaryConfiguration.cleanup()
 				callbackOnClose?.(code, signal)
 			})
 		} catch (error) {
-			temp.cleanupFunc()
+			temporaryConfiguration.cleanup()
 			throw error
 		}
 	}
