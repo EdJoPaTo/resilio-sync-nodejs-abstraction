@@ -22,7 +22,7 @@ export class ResilioSync {
 	/**
 	 * Starts syncing with the provided configFile. Stops previously running sync process.
 	 */
-	async syncConfigFile(configFilePath: string, callbackOnClose: CloseCallback = () => {}): Promise<void> {
+	async syncConfigFile(configFilePath: string, callbackOnClose?: CloseCallback): Promise<void> {
 		await this.stop()
 
 		this._process = new ResilioSyncProcess(this.resilioBinary, configFilePath)
@@ -32,7 +32,7 @@ export class ResilioSync {
 	/**
 	 * Starts syncing with the provided config. Stops previously running sync process.
 	 */
-	async syncConfig(config: ResilioConfig, callbackOnClose: CloseCallback = () => {}): Promise<void> {
+	async syncConfig(config: ResilioConfig, callbackOnClose?: CloseCallback): Promise<void> {
 		const temp = createTempConfigFile()
 
 		try {
@@ -41,7 +41,7 @@ export class ResilioSync {
 
 			await this.syncConfigFile(temp.filepath, (code: number, signal: string) => {
 				temp.cleanupFunc()
-				callbackOnClose(code, signal)
+				callbackOnClose?.(code, signal)
 			})
 		} catch (error) {
 			temp.cleanupFunc()

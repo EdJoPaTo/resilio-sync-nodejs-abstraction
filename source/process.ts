@@ -8,7 +8,7 @@ export class ResilioSyncProcess {
 		private readonly resilioConfigFilePath: string
 	) {}
 
-	start(callbackOnClose: (code: number, signal: string) => void): void {
+	start(callbackOnClose?: (code: number, signal: string) => void): void {
 		const syncArgs = ['--nodaemon', '--config', this.resilioConfigFilePath]
 
 		this._resilioProcess = spawn(this.resilioBinary, syncArgs, {
@@ -17,7 +17,7 @@ export class ResilioSyncProcess {
 
 		this._resilioProcess.on('close', (code, signal) => {
 			this._resilioProcess = undefined
-			callbackOnClose(code, signal)
+			callbackOnClose?.(code, signal)
 		})
 	}
 
