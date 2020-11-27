@@ -16,11 +16,11 @@ export class TemporaryConfiguration {
 	cleanup(): void {
 		try {
 			unlinkSync(this.filepath)
-		} catch (_) {}
+		} catch {}
 
 		try {
 			rmdirSync(this._folder)
-		} catch (_) {}
+		} catch {}
 	}
 }
 

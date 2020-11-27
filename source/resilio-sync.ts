@@ -43,7 +43,7 @@ export class ResilioSync {
 				temporaryConfiguration.cleanup()
 				callbackOnClose?.(code, signal)
 			})
-		} catch (error) {
+		} catch (error: unknown) {
 			temporaryConfiguration.cleanup()
 			throw error
 		}

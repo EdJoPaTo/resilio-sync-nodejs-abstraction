@@ -24,7 +24,8 @@ export class ResilioSyncProcess {
 	async stop(): Promise<void> {
 		const promise = new Promise<void>((resolve, reject) => {
 			if (!this._resilioProcess) {
-				return resolve()
+				resolve()
+				return
 			}
 
 			this._resilioProcess.on('close', (code, signal) => {
