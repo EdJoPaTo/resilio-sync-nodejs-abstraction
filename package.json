@@ -41,7 +41,7 @@
 		"semicolon": false,
 		"rules": {
 			"node/no-unsupported-features/node-builtins": "warn",
-			"@typescript-eslint/prefer-readonly-parameter-types": "warn"
+			"@typescript-eslint/prefer-readonly-parameter-types": "error"
 		},
 		"overrides": [
 			{

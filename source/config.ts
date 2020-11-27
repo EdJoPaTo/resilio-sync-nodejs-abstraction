@@ -2,12 +2,12 @@
 // Send a PullRequest to add missing types
 
 export interface ResilioConfigFolder {
-	dir: string;
-	secret: string;
+	readonly dir: string;
+	readonly secret: string;
 }
 
 export interface ResilioConfig {
-	device_name: string;
-	storage_path: string;
-	shared_folders: ResilioConfigFolder[];
+	readonly device_name: string;
+	readonly storage_path: string;
+	readonly shared_folders: readonly ResilioConfigFolder[];
 }
