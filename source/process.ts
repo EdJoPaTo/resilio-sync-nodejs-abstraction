@@ -1,5 +1,10 @@
 import {spawn, ChildProcess} from 'child_process'
 
+/**
+ * See ChildProcess.on('close', <…>)
+ */
+export type CloseCallback = (code: number | null, signal: NodeJS.Signals | null) => void
+
 export class ResilioSyncProcess {
 	private _resilioProcess?: ChildProcess
 
@@ -8,7 +13,7 @@ export class ResilioSyncProcess {
 		private readonly resilioConfigFilePath: string
 	) {}
 
-	start(callbackOnClose?: (code: number, signal: string) => void): void {
+	start(callbackOnClose?: CloseCallback): void {
 		const syncArgs = ['--nodaemon', '--config', this.resilioConfigFilePath]
 
 		this._resilioProcess = spawn(this.resilioBinary, syncArgs, {
@@ -30,7 +35,7 @@ export class ResilioSyncProcess {
 
 			this._resilioProcess.on('close', (code, signal) => {
 				if (code) {
-					reject(new Error(`Resilio terminated badly: ${code} ${signal}`))
+					reject(new Error(`Resilio terminated badly: ${code} ${String(signal)}`))
 				} else {
 					resolve()
 				}

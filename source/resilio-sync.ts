@@ -5,9 +5,7 @@ import {ResilioConfig} from './config'
 import {generateFoldersOnFilesystem} from './filesystem'
 import {TemporaryConfiguration} from './temporary-configuration'
 
-import {ResilioSyncProcess} from './process'
-
-type CloseCallback = (code: number, signal: string) => void
+import {ResilioSyncProcess, CloseCallback} from './process'
 
 /**
  * Class to handle a resilio process to sync
@@ -39,7 +37,7 @@ export class ResilioSync {
 			await generateFoldersOnFilesystem(config)
 			await writeJsonFile(temporaryConfiguration.filepath, config)
 
-			await this.syncConfigFile(temporaryConfiguration.filepath, (code: number, signal: string) => {
+			await this.syncConfigFile(temporaryConfiguration.filepath, (code, signal) => {
 				temporaryConfiguration.cleanup()
 				callbackOnClose?.(code, signal)
 			})
