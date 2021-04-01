@@ -2,6 +2,10 @@
 	"name": "resilio-sync",
 	"version": "2.0.1",
 	"description": "Resilio Sync Abstraction",
+	"keywords": [
+		"resilio",
+		"sync"
+	],
 	"license": "MIT",
 	"repository": "EdJoPaTo/resilio-sync-nodejs-abstraction",
 	"author": {
@@ -9,25 +13,15 @@
 		"email": "edjopato@gmail.com",
 		"url": "https://edjopato.de"
 	},
+	"scripts": {
+		"build": "del-cli dist && tsc",
+		"prepack": "npm run build",
+		"test": "tsc --sourceMap && xo"
+	},
 	"type": "commonjs",
 	"engines": {
 		"node": ">=12"
 	},
-	"scripts": {
-		"build": "del-cli dist && tsc",
-		"prepack": "npm run build",
-		"test": "tsc && xo"
-	},
-	"main": "dist",
-	"types": "dist",
-	"files": [
-		"dist",
-		"!*.test.*"
-	],
-	"keywords": [
-		"resilio",
-		"sync"
-	],
 	"dependencies": {
 		"write-json-file": "^4.1.1"
 	},
@@ -38,6 +32,12 @@
 		"typescript": "^4.2.3",
 		"xo": "^0.38.1"
 	},
+	"files": [
+		"dist",
+		"!*.test.*"
+	],
+	"main": "dist",
+	"types": "dist",
 	"xo": {
 		"semicolon": false,
 		"rules": {
