@@ -42,17 +42,6 @@
 		"semicolon": false,
 		"rules": {
 			"@typescript-eslint/prefer-readonly-parameter-types": "error"
-		},
-		"overrides": [
-			{
-				"files": [
-					"source/config.ts"
-				],
-				"rules": {
-					"@typescript-eslint/camelcase": "off",
-					"camelcase": "off"
-				}
-			}
-		]
+		}
 	}
 }
