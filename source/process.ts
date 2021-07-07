@@ -10,14 +10,14 @@ export class ResilioSyncProcess {
 
 	constructor(
 		private readonly resilioBinary: string,
-		private readonly resilioConfigFilePath: string
+		private readonly resilioConfigFilePath: string,
 	) {}
 
 	start(callbackOnClose?: CloseCallback): void {
 		const syncArgs = ['--nodaemon', '--config', this.resilioConfigFilePath]
 
 		this._resilioProcess = spawn(this.resilioBinary, syncArgs, {
-			stdio: 'ignore'
+			stdio: 'ignore',
 		})
 
 		this._resilioProcess.on('close', (code, signal) => {

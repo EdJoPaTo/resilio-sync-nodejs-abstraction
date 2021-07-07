@@ -14,7 +14,7 @@ export class ResilioSync {
 	private _process?: ResilioSyncProcess
 
 	constructor(
-		private readonly resilioBinary: string = 'rslsync'
+		private readonly resilioBinary: string = 'rslsync',
 	) {}
 
 	/**
