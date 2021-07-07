@@ -10,7 +10,7 @@
 	"repository": "EdJoPaTo/resilio-sync-nodejs-abstraction",
 	"author": {
 		"name": "EdJoPaTo",
-		"email": "edjopato@gmail.com",
+		"email": "resilio-sync-nodejs-abstraction-npm-package@edjopato.de",
 		"url": "https://edjopato.de"
 	},
 	"scripts": {
