@@ -23,7 +23,7 @@
 		"node": ">=12"
 	},
 	"dependencies": {
-		"write-json-file": "^4.1.1"
+		"write-json-file": "^5.0.0"
 	},
 	"devDependencies": {
 		"@sindresorhus/tsconfig": "^1.0.1",
